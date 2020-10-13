@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//测试模块
+Route::prefix('test')->middleware([])->group(function () {
+    Route::get('/basic', [\App\Http\Controllers\Test\TestController::class, 'basic']);
+    Route::get('/exception', [\App\Http\Controllers\Test\TestController::class, 'exception']);
+    Route::get('/verify', [\App\Http\Controllers\Test\TestController::class, 'verify']);
+    Route::match(['get', 'post'],'/db', [\App\Http\Controllers\Test\TestController::class, 'db']);
+});
