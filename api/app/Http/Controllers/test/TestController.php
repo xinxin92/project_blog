@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Test;
 
 use App\Exceptions\ApiException;
+use App\Library\EncryptLib;
 use App\Library\VerifyLib;
 use App\Models\AdminUser;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class TestController
 {
     public function basic()
     {
-        echo 'basic';
+        echo EncryptLib::createPassword('yuxinwei');
+//        echo 'basic';
     }
 
     public function exception()

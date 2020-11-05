@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Request $request)
+    public function boot()
     {
-        if ($request->input('debug_db')) {
+        if (!empty(request()->all()['debug_db'])) {
             DB::connection('mysql')->listen(function ($query) {
                 var_dump([$query->sql, $query->time]);
             });

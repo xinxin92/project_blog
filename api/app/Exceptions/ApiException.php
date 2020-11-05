@@ -5,7 +5,7 @@ class ApiException extends \Exception
 {
     public function __construct($msg = '', $code = null)
     {
-        $code === null && $code = 10000;
+        $code === null && $code = config('services.response_code')['fail'];
         parent::__construct($msg, $code);
     }
 

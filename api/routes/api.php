@@ -25,3 +25,10 @@ Route::prefix('test')->middleware([])->group(function () {
     Route::get('/verify', [\App\Http\Controllers\Test\TestController::class, 'verify']);
     Route::match(['get', 'post'],'/db', [\App\Http\Controllers\Test\TestController::class, 'db']);
 });
+
+
+//管理后台
+Route::prefix('admin')->middleware([])->group(function () {
+    Route::match(['get', 'post'],'/login', [\App\Http\Controllers\Admin\AuthController::class, 'login']);
+    Route::match(['get', 'post'],'/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout']);
+});
